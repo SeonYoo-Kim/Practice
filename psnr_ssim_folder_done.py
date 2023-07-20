@@ -4,9 +4,9 @@ import numpy as np
 from skimage.metrics import structural_similarity as ssim
 from PIL import Image
 import os
-#E:\SR\Results\Step1\Set5
-ori_folder = "C:/Users/tjdn9/Documents/srdata/Set14/HR"
-compare_folder = "C:/Users/tjdn9/Documents/srdata/Set5/resultx4/Set14"
+#C:\Users\tjdn9\Documents\SuperResolution\benchmark\Step1\BSD100
+ori_folder = "C:/Users/tjdn9/Documents/srdata/BSD100/HR"
+compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/benchmark/Step2/BSD100"
 ori_filenames = [filename for filename in os.listdir(ori_folder) if filename.endswith(".png")]
 compare_filenames = [filename for filename in os.listdir(compare_folder) if filename.endswith(".png")]
 
@@ -39,6 +39,11 @@ def main():
     file_path = 'C:/Users/tjdn9/Documents/SuperResolution/temp.txt'  # 저장할 파일 경로 및 파일명
     file_mode = 'w'  # 쓰기 모드
     file = open(file_path, file_mode)
+
+    for filename in ori_filenames:
+        file.write(f"{filename}\n")
+
+    file.write("\n")
 
     for filename in ori_filenames:
         ori_img = cv2.imread(os.path.join(ori_folder, filename), flags=cv2.IMREAD_COLOR)

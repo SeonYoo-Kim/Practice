@@ -2,20 +2,17 @@ from configparser import Interpolation
 import cv2
 import os
 # 이미지 파일 경로 지정C:\Users\tjdn9\Documents\srdata\MANGA109\HR
-image_path = "C:/Users/tjdn9/Documents/srdata/MANGA109/HR"
-#image_path_origin = "C:/Users/tjdn9/Documents/SuperResolution/Set5/DataSet/HR"
+image_path = "C:/Users/tjdn9/Documents/srdata/DIV8k/HR"
+save_path = "C:/Users/tjdn9/Documents/srdata/DIV8k/LR_bicubic/X16"
 filenames = [filename for filename in os.listdir(image_path) if filename.endswith(".png")]
+scale = 16
 
 # 이미지 읽어오기
 for filename in filenames:
-
-
     img = cv2.imread(os.path.join(image_path, filename), flags=cv2.IMREAD_COLOR)
     h, w, c = img.shape
-    h/=4
-    w/=4
-
-
+    h /= scale
+    w /= scale
     #img_origin = cv2.imread(os.path.join(image_path_origin, filename), flags=cv2.IMREAD_COLOR)
 
 #    h, w, c = img_origin.shape
@@ -35,7 +32,6 @@ for filename in filenames:
     #resized_img = cv2.resize(img, (240, 135), cv2.INTER_CUBIC)
     #4K 32배
     resized_img = cv2.resize(img, (int(w), int(h)), cv2.INTER_CUBIC)
-
     #resized_img = cv2.resize(img, (35, 35), Interpolation=cv2.INTER_CUBIC)
 
     #imagenet 2배
@@ -65,6 +61,6 @@ for filename in filenames:
     #resized_img = cv2.resize(img, (14, 8), cv2.INTER_CUBIC)
     
     #이미지 저장 C:\Users\tjdn9\Documents\SuperResolution\4\x2
-    save_name = "C:/Users/tjdn9/Documents/srdata/MANGA109/LR_bicubic/X4/{}".format(filename)
+    save_name = os.path.join(save_path, filename)
     
     cv2.imwrite(save_name, resized_img)
