@@ -14,11 +14,7 @@ import cv2
 
 
 #C:\Users\tjdn9\Documents\SuperResolution\TEST\x16\2_M-FBN-S_x4_2\DIV8K
-#ori_folder = "C:/Users/user/Desktop/Mypaper/DataSet/manga109"
 ori_folder = "C:/Users/tjdn9/Documents/srdata/DIV8k/HR"
-#ori_folder = "C:/Users/user/Desktop/Mypaper/DataSet/Urban100/HR"
-#ori_folder = "C:/Users/user/Desktop/Mypaper/DataSet/BSD100/HR"
-#compare_folder = "C:/Users/user/Desktop/Mypaper/2024 AAAI/Results/A_M-FBN enssenble/1_MLx2_2_MLx2_3_MLx2_4_FLx2/MANGA109"
 compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/1_ABPN/x16→x4→HR/DIV8k"
 ori_filenames = [filename for filename in os.listdir(ori_folder) if filename.endswith(".png")]
 compare_filenames = [filename for filename in os.listdir(compare_folder) if filename.endswith(".png")]
@@ -155,11 +151,11 @@ def main():
     # compressed = cv2.imread("10_16blend4blend_train.pth_x3.png", 1)
 
     # 파일 열기
-    name_path = 'C:/Users/user/Desktop/Mypaper/DataSet/NAME.txt'
-    psnr_path = 'C:/Users/user/Desktop/Mypaper/DataSet/PSNR.txt'
-    ssim_path = 'C:/Users/user/Desktop/Mypaper/DataSet/SSIM.txt'
-    psnr2_path = 'C:/Users/user/Desktop/Mypaper/DataSet/PSNR2.txt'
-    psnr_paper_path = 'C:/Users/user/Desktop/Mypaper/DataSet/PSNR_paper.txt'
+    name_path = "C:/Users/tjdn9/Documents/SuperResolution/NAME.txt"
+    psnr_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR.txt"
+    ssim_path = "C:/Users/tjdn9/Documents/SuperResolution/SSIM.txt"
+    psnr2_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR2.txt"
+    psnr_paper_path = 'C:/Users/tjdn9/Documents/SuperResolution/PSNR_paper.txt'
     file_mode = 'w'  # 쓰기 모드
     name_txt = open(name_path, file_mode)
     psnr_txt = open(psnr_path, file_mode)
@@ -181,7 +177,7 @@ def main():
 
         value = PSNR(ori_img, compare_img)
         value2 = PSNR2(ori_img, compare_img)
-        value3 , ssim3= calc_metrics(ori_img, compare_img, crop_border=4)
+        value3, ssim3 = calc_metrics(ori_img, compare_img, crop_border=4)
         psnr_txt.write(f"{value}\n")
         psnr2_txt.write(f"{value2}\n")
         psnr_paper_txt.write(f"{value3}\n")
@@ -202,6 +198,8 @@ def main():
     name_txt.close()
     psnr_txt.close()
     ssim_txt.close()
+    psnr2_txt.close()
+    psnr_paper_txt.close()
 
 if __name__ == "__main__":
     main()
