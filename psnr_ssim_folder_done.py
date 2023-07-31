@@ -6,7 +6,7 @@ from PIL import Image
 import os
 #C:\Users\tjdn9\Documents\SuperResolution\TEST\x16\2_M-FBN-S_x4_2\DIV8K
 ori_folder = "C:/Users/tjdn9/Documents/srdata/DIV8k/HR"
-compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/x16/SRFBN/1_MLx4_2_MLx4/DIV8k"
+compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/1_ABPN/x16→x4→HR/DIV8k"
 ori_filenames = [filename for filename in os.listdir(ori_folder) if filename.endswith(".png")]
 compare_filenames = [filename for filename in os.listdir(compare_folder) if filename.endswith(".png")]
 # Open and resize all images
