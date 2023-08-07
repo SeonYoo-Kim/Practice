@@ -1,8 +1,8 @@
 import os
 import cv2
 
-# 원본 파일명 C:\Users\tjdn9\Documents\SuperResolution\benchmark\Step2\BSD100
-image_path = "C:/Users/tjdn9/Documents/SuperResolution/benchmark/Step1/MANGA109/"
+# 원본 파일명 C:\Users\tjdn9\Documents\SuperResolution\abc\Bicubicx4\BSD100
+image_path = "C:/Users/tjdn9/Documents/SuperResolution/abc/Bicubicx4/BSD100"
 filenames = [filename for filename in os.listdir(image_path) if filename.endswith(".png")]
 
 for old_name in filenames:

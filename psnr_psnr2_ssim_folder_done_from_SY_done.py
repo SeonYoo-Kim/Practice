@@ -13,23 +13,17 @@ from PIL import Image
 import cv2
 
 
-#C:\Users\tjdn9\Documents\SuperResolution\TEST\x16\2_M-FBN-S_x4_2\DIV8K
-#ori_folder = "C:/Users/user/Desktop/Mypaper/DataSet/manga109"
-ori_folder = "C:/Users/tjdn9/Documents/srdata/DIV8k/HR"
-#ori_folder = "C:/Users/user/Desktop/Mypaper/DataSet/Urban100/HR"
-#ori_folder = "C:/Users/user/Desktop/Mypaper/DataSet/BSD100/HR"
-#compare_folder = "C:/Users/user/Desktop/Mypaper/2024 AAAI/Results/A_M-FBN enssenble/1_MLx2_2_MLx2_3_MLx2_4_FLx2/MANGA109"
-compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/2_M-FBN/x16/x2x2x2x2/A_MFBN_ENSENBLE/1_MLx2_2_MLx2_3_MLx2_4_FLx2/DIV8k"
+#ori_folder =C:\Users\tjdn9\Documents\SuperResolution\acc\HR
+ori_folder = "C:/Users/tjdn9/Documents/SuperResolution/acc/HR/KBS_logo/crop"
+#C:\Users\tC:\C:\C:\C:\Users\tjdn9\Documents\SuperResolution\acc\Results\x4x2x2\MLx4MLx2FLx2\new_logo
+compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/acc/Results/x4x2x2/MLx4MLx2FLx2/KBS_logo/crop"
 ori_filenames = [filename for filename in os.listdir(ori_folder) if filename.endswith(".png")]
 compare_filenames = [filename for filename in os.listdir(compare_folder) if filename.endswith(".png")]
 # Open and resize all images
 images = []
 print(ori_filenames)
-# for filename in image_filenames:
-#     ori_img = cv2.imread(os.path.join(ori_folder, filename), flags=cv2.IMREAD_COLOR)
-#     compare_img = cv2.imread(os.path.join(compare_folder, filename), flags=cv2.IMREAD_COLOR)
+
 def PSNR(original, compressed): #
-    #mse = np.mean((original[0:230, 0:390] - compressed[0:230, 0:390]) ** 2)
     mse = np.mean((original - compressed) ** 2)
     if (mse == 0):  # MSE is zero means no noise is present in the signal .
         # Therefore PSNR have no importance.
@@ -156,37 +150,38 @@ def main():
 
     # 파일 열기
     name_path = "C:/Users/tjdn9/Documents/SuperResolution/NAME.txt"
-    psnr_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR.txt"
+    #psnr_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR.txt"
     ssim_path = "C:/Users/tjdn9/Documents/SuperResolution/SSIM.txt"
-    psnr2_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR2.txt"
+    #psnr2_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR2.txt"
     psnr_paper_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR_paper.txt"
     file_mode = 'w'  # 쓰기 모드
     name_txt = open(name_path, file_mode)
-    psnr_txt = open(psnr_path, file_mode)
+    #psnr_txt = open(psnr_path, file_mode)
     ssim_txt = open(ssim_path, file_mode)
-    psnr2_txt = open(psnr2_path, file_mode)
+    #psnr2_txt = open(psnr2_path, file_mode)
     psnr_paper_txt = open(psnr_paper_path, file_mode)
 
     for filename in ori_filenames:
 
-        #name_txt.write(f"{filename}\n")
+        name_txt.write(f"{filename}\n")
 
         ori_img = cv2.imread(os.path.join(ori_folder, filename), flags=cv2.IMREAD_COLOR)
         compare_img = cv2.imread(os.path.join(compare_folder, filename), flags=cv2.IMREAD_COLOR)
 
         ho, wo, co = ori_img.shape
         h, w, c = compare_img.shape
+
         if ((ho != h) or (wo != w)):
             compare_img = cv2.resize(compare_img, (wo, ho), cv2.INTER_CUBIC)
 
         value = PSNR(ori_img, compare_img)
         value2 = PSNR2(ori_img, compare_img)
         value3 , ssim3= calc_metrics(ori_img, compare_img, crop_border=4)
-        psnr_txt.write(f"{value}\n")
-        psnr2_txt.write(f"{value2}\n")
+        #psnr_txt.write(f"{value}\n")
+        #psnr2_txt.write(f"{value2}\n")
         psnr_paper_txt.write(f"{value3}\n")
-        print(f"{filename} PSNR value is {value} dB")
-        print(f"{filename} PSNR value2 is {value2} dB")
+        #print(f"{filename} PSNR value is {value} dB")
+        #print(f"{filename} PSNR value2 is {value2} dB")
         print(f"{filename} PSNR value3 is {value3} dB")
 
         grayA = cv2.cvtColor(compare_img, cv2.COLOR_BGR2GRAY)
@@ -199,8 +194,8 @@ def main():
         ssim_txt.write(f"{score}\n")
         print("SSIM: {}".format(score))
 
-    name_txt.close()
-    psnr_txt.close()
+    #name_txt.close()
+    #psnr_txt.close()
     ssim_txt.close()
 
 if __name__ == "__main__":
