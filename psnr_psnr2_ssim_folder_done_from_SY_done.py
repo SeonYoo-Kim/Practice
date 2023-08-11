@@ -14,9 +14,9 @@ import cv2
 
 
 #ori_folder =C:\Users\tjdn9\Documents\SuperResolution\acc\HR
-ori_folder = "C:/Users/tjdn9/Documents/SuperResolution/acc/HR/KBS_logo/crop"
-#C:\Users\tC:\C:\C:\C:\Users\tjdn9\Documents\SuperResolution\acc\Results\x4x2x2\MLx4MLx2FLx2\new_logo
-compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/acc/Results/x4x2x2/MLx4MLx2FLx2/KBS_logo/crop"
+ori_folder = "C:/Users/tjdn9/Documents/srdata/Set5/HR"
+#C:\Users\tC:\CC:\Users\tjdn9\Documents\SuperResolution\TEST\5_DBPN\X8
+compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/5_DBPN/X8/Set5"
 ori_filenames = [filename for filename in os.listdir(ori_folder) if filename.endswith(".png")]
 compare_filenames = [filename for filename in os.listdir(compare_folder) if filename.endswith(".png")]
 # Open and resize all images
