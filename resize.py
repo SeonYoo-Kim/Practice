@@ -2,16 +2,16 @@ from configparser import Interpolation
 import cv2
 from PIL import Image, ImageOps
 import os
-# 업스케일링 C:\Users\tjdn9\Documents\srdata\Set5\HR
-LR_path = "C:/Users/tjdn9/Documents/srdata/Set5/LR_bicubic_PIL/X4"
-filenames = [filename for filename in os.listdir(LR_path) if filename.endswith(".png")]
-HR_path = "C:/Users/tjdn9/Documents/srdata/Set5/HR"
-# 다운스케일링
+# 업스케일링 C:\Users\tjdn9\Documents\srdata\T-91\HR
+# LR_path = "C:/Users/tjdn9/Documents/srdata/Set5/LR_bicubic_PIL/X2"
+# filenames = [filename for filename in os.listdir(LR_path) if filename.endswith(".png")]
 # HR_path = "C:/Users/tjdn9/Documents/srdata/Set5/HR"
-# filenames = [filename for filename in os.listdir(HR_path) if filename.endswith(".png")]
+# 다운스케일링 C:\Users\tjdn9\Documents\srdata\BSD100\HR
+HR_path = "C:/Users/tjdn9/Documents/srdata/DIV8k/HR"
+filenames = [filename for filename in os.listdir(HR_path) if filename.endswith(".png")]
 
-save_path = "C:/Users/tjdn9/Documents/srdata/Set5/LR_bicubic_PIL/X4_resized"
-scale = 4
+save_path = "C:/Users/tjdn9/Documents/srdata/DIV8k/LR_bicubic_PIL/X8"
+scale = 8
 
 def mkdir(path):
     if not os.path.exists(path):
@@ -43,10 +43,12 @@ def PIL_HRsize(filename, LR_path, HR_path, save_path):
     save_name = os.path.join(save_path, filename)
     resized.save(save_name)
 if __name__ == "__main__":
-    mkdir(save_path)
+
+    if not os.path.exists(save_path):
+        mkdir(save_path)
     for filename in filenames:
-        #PIL_DOWN(filename, HR_path, save_path)
+        PIL_DOWN(filename, HR_path, save_path)
         #PIL_UP(filename, LR_path, save_path)
-        CV2_DOWN(filename, HR_path, save_path)
+        #CV2_DOWN(filename, HR_path, save_path)
         #CV2_UP(filename, LR_path, save_path)
         #PIL_HRsize(filename, LR_path, HR_path, save_path)
