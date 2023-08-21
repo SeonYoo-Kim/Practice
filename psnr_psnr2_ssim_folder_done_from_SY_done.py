@@ -13,10 +13,10 @@ from PIL import Image
 import cv2
 
 
-#ori_folder =C:\Users\tjdn9\Documents\SuperResolution\acc\HR
-ori_folder = "C:/Users/tjdn9/Documents/srdata/Set5/HR"
-#C:\Users\tC:\CC:\Users\tjdn9\Documents\SuperResolution\TEST\5_DBPN\X8
-compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/5_DBPN/X8/Set5"
+#ori_folder C:\Users\tjdn9\Documents\SuperResolution\SRCNN\srcnn\GT
+ori_folder = "C:/Users/tjdn9/Documents/srdata/DIV8k/HR"
+#C:\UseC:\UseC:\UsC:\Users\tjdn9\Documents\SuperResolution\TEST\PILX16\ABPNx16\BSD100
+compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/PILX16/ABPNx16/DIV8k"
 ori_filenames = [filename for filename in os.listdir(ori_folder) if filename.endswith(".png")]
 compare_filenames = [filename for filename in os.listdir(compare_folder) if filename.endswith(".png")]
 # Open and resize all images
@@ -145,9 +145,6 @@ def calc_ssim(img1, img2):
         raise ValueError('Wrong input image dimensions.')
 
 def main():
-    # original = cv2.imread("10_16blend.png")
-    # compressed = cv2.imread("10_16blend4blend_train.pth_x3.png", 1)
-
     # 파일 열기
     name_path = "C:/Users/tjdn9/Documents/SuperResolution/NAME.txt"
     #psnr_path = "C:/Users/tjdn9/Documents/SuperResolution/PSNR.txt"
@@ -194,7 +191,7 @@ def main():
         ssim_txt.write(f"{score}\n")
         print("SSIM: {}".format(score))
 
-    #name_txt.close()
+    name_txt.close()
     #psnr_txt.close()
     ssim_txt.close()
 
