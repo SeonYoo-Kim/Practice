@@ -13,10 +13,10 @@ from PIL import Image
 import cv2
 
 
-#ori_folder C:\Users\tjdn9\Documents\SuperResolution\SRCNN\srcnn\GT
-ori_folder = "C:/Users/tjdn9/Documents/srdata/DIV8k/HR"
-#C:\UseC:\UseC:\UsC:\Users\tjdn9\Documents\SuperResolution\TEST\PILX16\ABPNx16\BSD100
-compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/TEST/PILX16/ABPNx16/DIV8k"
+#ori_folder C:C:\Users\tjdn9\Documents\srdata\DIV2k\LR_bicubic_PIL\X16
+ori_folder = "C:/Users/tjdn9/Documents/srdata/DIV2k/LR_bicubic_PIL/X16"
+#C:\UseC:\UseCC:CC:\Users\tjdn9\Documents\SuperResolution\data\DIV2K\valid\Augment\DIV2K_test_LR_aug\x16\non_aug
+compare_folder = "C:/Users/tjdn9/Documents/SuperResolution/data/DIV2K/valid/Augment/DIV2K_test_LR_aug/x16/non_aug"
 ori_filenames = [filename for filename in os.listdir(ori_folder) if filename.endswith(".png")]
 compare_filenames = [filename for filename in os.listdir(compare_folder) if filename.endswith(".png")]
 # Open and resize all images
